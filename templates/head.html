@@ -1,3 +1,6 @@
+{% load static %}
+{#    내부 정적 파일들은 이런식으로 가져 와야함..#}
+{# 외부 파일들은 아래와 같이 적어주면 됨 #}
 <head>
     <meta charset="UTF-8">
     <title>project 1</title>
@@ -7,8 +10,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    {# googo\le fonts link#}
+    {# googole fonts link#}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@500&display=swap" rel="stylesheet">
+
+    {# DEFAULT CSS LINK #}
+    <link rel="stylesheet" type='text/css' href="{% static 'base.css'%}">
+{#    위에서 load static 해주고 위와 같은 링크형태를 만들어줌#}
+
 </head>
