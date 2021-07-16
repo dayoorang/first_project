@@ -20,9 +20,15 @@
            </a>
         </span>
         {% else %}
+
         <span>
             <a href ="{% url 'accountapp:logout' %}">
                 Logout
+           </a>
+        </span>
+        <span>
+            <a href ="{% url 'accountapp:detail' user.pk %}">
+                Mypage
            </a>
         </span>
         {% endif %}
