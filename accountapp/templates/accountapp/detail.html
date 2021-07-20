@@ -10,6 +10,13 @@
         <div>
             {{ target_user.date_joined }}
         </div>
+
+        <div>
+            <a href = "{% url 'accountapp:update' pk=target_user.pk %}">
+                Update Info
+            </a>
+{#            # 디테일 페이지니까 target_user에접근가능#}
+        </div>
     </div>
 
 {% endblock %}
