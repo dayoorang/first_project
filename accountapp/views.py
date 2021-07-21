@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
@@ -5,30 +6,30 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 from accountapp.forms import AccountCreationForm
 from accountapp.models import NewModel
 
-
+@login_required(login_url=reverse_lazy('accountapp:login'))   # /accounts/login 이 기본 장고 경로임 , 이거랑 다른경우는 추가적인 인자 넣어줘야함.
 def hello_world(request):
-    if request.user.is_authenticated:
-        if request.method == "POST":
-            temp = request.POST.get('input_text')
+    if request.method == "POST":
+        temp = request.POST.get('input_text')
 
-            new_model= NewModel()
-            new_model.text = temp
-            new_model.save()
+        new_model= NewModel()
+        new_model.text = temp
+        new_model.save()
 
-            data_list = NewModel.objects.all()
+        data_list = NewModel.objects.all()
 
-            return HttpResponseRedirect(reverse('accountapp:hello_world'))
-        else:
-            data_list = NewModel.objects.all()
-            return render(request, 'accountapp/hello_world.html',
-                          context={'data_list': data_list})
+        return HttpResponseRedirect(reverse('accountapp:hello_world'))
     else:
-        return HttpResponseRedirect(reverse('accountapp:login'))
+        data_list = NewModel.objects.all()
+        return render(request, 'accountapp/hello_world.html',
+                      context={'data_list': data_list})
+
+
 
 class AccountCreateView(CreateView):
     model = User
@@ -43,6 +44,8 @@ class AccountDetailView(DetailView):
     template_name = 'accountapp/detail.html'
 
 
+@method_decorator(login_required, 'get') # get 메소드에 적용하겠다
+@method_decorator(login_required, 'post') # post 메소드에 적용하겠다
 class AccountUpdateView(UpdateView):
     model = User
     form_class = AccountCreationForm
@@ -50,32 +53,13 @@ class AccountUpdateView(UpdateView):
     success_url = reverse_lazy('accountapp:hello_world') # reverse_lazy메소드로는 detail에 못감..복잡..
     template_name = 'accountapp/update.html'
 
-    def get(self, request, *args, **kwargs):
-        if request.user.is_authenticated and self.get_object() == request.user:  # get_object()가 target_user을 가지고 오는것임.
-            return super().get(self, request, *args, **kwargs)
-        else:
-            return HttpResponseForbidden()
 
-    def post(self, request, *args, **kwargs):
-        if request.user.is_authenticated and self.get_object() == request.user:  # get_object()가 target_user을 가지고 오는것임.
-            return super().post(self, request, *args, **kwargs)
-        else:
-            return HttpResponseForbidden()
 
+@method_decorator(login_required, 'get') # get 메소드에 적용하겠다
+@method_decorator(login_required, 'post') # post 메소드에 적용하겠다
 class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'
     success_url = reverse_lazy('accountapp:hello_world')
     template_name = 'accountapp/delete.html'
 
-    def get(self, request, *args, **kwargs):
-        if request.user.is_authenticated and self.get_object() == request.user:  # get_object()가 target_user을 가지고 오는것임.
-            return super().get(self, request, *args, **kwargs)
-        else:
-            return HttpResponseForbidden()
-
-    def post(self, request, *args, **kwargs):
-        if request.user.is_authenticated and self.get_object() == request.user:  # get_object()가 target_user을 가지고 오는것임.
-            return super().post(self, request, *args, **kwargs)
-        else:
-            return HttpResponseForbidden()
