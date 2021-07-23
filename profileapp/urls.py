@@ -1,10 +1,10 @@
-rom django.contrib import admin
-from django.urls import path, include
-
-
-# app_name = 'profile'
+# from django.contrib import admin
+# from django.urls import path, include
 #
-# urlpatterns = [
-#     path('', , name = ''),
 #
-# ]
+# # app_name = 'profile'
+# #
+# # urlpatterns = [
+# #     path('', , name = ''),
+# #
+# # ]
