@@ -23,3 +23,11 @@
     max-width: 500px;
     padding: 1rem 1.5rem;
 }
+
+.profile_image {
+    height: 12rem;
+    width: 12rem;
+    border-radius: 20rem ;
+    object-fit: cover;
+}
+/*object_fit 하면 사진 왜곡다는게 비율에 맞춰서 됨..*/
