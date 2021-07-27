@@ -14,3 +14,6 @@ class ProfileCreateView(CreateView):
     success_url = reverse_lazy('accountapp:hello_world')
     template_name = 'profileapp/create.html'
 
+    def form_valid(self, form): # 다 검증이 완료된후 실행되는 함수.. FBV 에서는 form.is_valid() 인듯..
+        form.instance.user = self.request.user # form 안에 것들을 저장할 그때당시의 user / form.user X
+        return super().form_valid(form)
