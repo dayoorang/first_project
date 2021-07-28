@@ -31,3 +31,8 @@
     object-fit: cover;
 }
 /*object_fit 하면 사진 왜곡다는게 비율에 맞춰서 됨..*/
+
+
+.NNS_B {
+    font-family: "NanumSquareB", cursive;
+}
