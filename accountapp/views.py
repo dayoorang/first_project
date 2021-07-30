@@ -47,7 +47,6 @@ class AccountDetailView(DetailView):
     template_name = 'accountapp/detail.html'
 
 
-
 has_ownership = [login_required,account_ownership_required]
 
 
@@ -71,5 +70,6 @@ class AccountDeleteView(DeleteView):
     context_object_name = 'target_user'
     success_url = reverse_lazy('accountapp:hello_world')
     template_name = 'accountapp/delete.html'
+
 
 
