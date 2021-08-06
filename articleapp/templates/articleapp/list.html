@@ -39,8 +39,10 @@
         {% endfor %}
     </div>
 
-    <script src="{% static 'js/magicgrid.js' %}" }>
+    <script src="{% static 'js/magicgrid.js' %}" }> </script>
 
-    </script>
+
+    {% include 'snippets/pagination.html' %}
+
 
 {% endblock %}

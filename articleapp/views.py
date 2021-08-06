@@ -58,5 +58,5 @@ class ArticleListView(ListView):
     model = Article
     context_object_name = 'article_list'   # 게시글의 다발을 들고있는 객체임.. 앞선 단일 객체랑은 다름..
     template_name = 'articleapp/list.html'
-    paginate_by = 20
+    paginate_by = 1
 
