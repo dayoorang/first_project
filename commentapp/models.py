@@ -13,7 +13,8 @@ class Comment(models.Model):
     content = models.TextField(null=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
-
-    # def form_valid(self):
     #
+    # def form_valid(self):
+    #     self.object.article.pk = request.pk
+    #     self.object.article.pk = request.pk
     #     return super().form_valid()
