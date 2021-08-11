@@ -10,7 +10,7 @@
         </div>
 
         <div>
-            <form action ="{% url 'articleapp:delete' pk=target_article.pk %}"
+            <form action ="{% url 'commentapp:delete' pk=target_comment.pk %}"
                   method="post">
                 {% csrf_token %}
                 <div class="m-5">
