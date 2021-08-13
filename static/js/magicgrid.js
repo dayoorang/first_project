@@ -278,11 +278,11 @@ MagicGrid.prototype.listen = function listen () {
 let magicGrid = new MagicGrid({
   container: '.container',
   animate: true,
-  gutter: 30,
+  gutter: 12,
   static: true,
   useMin: true
 });
-
+// gutter가 마진을 의미함.
 magicGrid.listen();
 
 var masonrys = document.getElementsByTagName("img")
