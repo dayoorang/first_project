@@ -1,7 +1,9 @@
 
 from django.urls import path, include
 
+from likeapp.views import LikeArticleView
 
+app_name = 'likeapp'
 urlpatterns = [
-    # path('like/', include('likeapp.urls')),
+    path('article/<int:article_pk>', LikeArticleView.as_view(), name='article_like'),
 ]
