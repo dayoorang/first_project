@@ -17,8 +17,6 @@ from subscribeapp.models import Subscription
 
 @transaction.atomic  # 원자화(쪼갤수 없게만들기)
 def db_transaction(user,article):
-
-
     like_record = LikeRecord.objects.filter(user=user,
                                             article=article)
 
