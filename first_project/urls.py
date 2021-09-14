@@ -16,4 +16,4 @@ urlpatterns = [
 
     path('subscribe/', include('subscribeapp.urls')),
     path('like/', include('likeapp.urls')),
-  ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) # docutment_root 경로를 뒤져서 MEDIA_URL 경로로 입력해주겠다라는 뜻.
+  ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
